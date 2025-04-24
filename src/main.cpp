@@ -17,7 +17,13 @@
 #include "menu.h"
 #include "text.h"
 #include "effects(hitbomb).h"
-   
+#include "game_timer.h"
+#include "game_score.h"
+
+GameTimer timer(20.0f);
+int score=0;
+int highScore = 0;
+bool gameOver = false;
 struct Trail {
     std::vector<SDL_Point> points;
 
@@ -29,9 +35,9 @@ struct Trail {
     }
 };
 
-
 int main() {
     srand(time(0));
+    timer.start();
     SDL_Window* window = nullptr;
     SDL_Renderer* renderer = nullptr;
     TTF_Font* font = nullptr;
@@ -71,13 +77,21 @@ int main() {
     std::vector<GameObject> newObjects;
     int spawnTimer = 0;
     Trail trail;
-    int score = 0;
+  
     int hp = 5;
     bool mouseDown = false;
     int mouseX = 0, mouseY = 0, prevMouseX = 0, prevMouseY = 0;
-
+    bool timeup=false;
     while (!quit) {
-       
+        
+        if (!gameOver && timer.isTimeUp()) {
+            gameOver = true;
+            timeup=true;
+            timer.stop();
+
+            if (score > highScore)
+                saveHighScore("highscore.txt", score);
+        }
         while (SDL_PollEvent(&e)) {
             if (e.type == SDL_QUIT) {
                 quit = true;
@@ -91,6 +105,7 @@ int main() {
             } else if (e.type == SDL_MOUSEBUTTONUP && e.button.button == SDL_BUTTON_LEFT) {
                 mouseDown = false;
             } else if (gameOver && e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_r) {
+                timer.start();
                 objects.clear();
                 newObjects.clear();
                 score = 0;
@@ -99,6 +114,7 @@ int main() {
                 trail.points.clear();
                 mouseDown = false;
                 gameOver = false;
+                timeup=false;
                 objects.push_back(GameObject(rand() % (SCREEN_WIDTH - OBJECT_SIZE), SCREEN_HEIGHT, FRUIT));
                 if (rand() % 3 == 0) {
                     objects.push_back(GameObject(rand() % (SCREEN_WIDTH - OBJECT_SIZE), SCREEN_HEIGHT, BOMB));
@@ -112,7 +128,7 @@ int main() {
             renderMenu(renderer, font, menuTexture, inMenu, quit, mouseX, mouseY, mouseDown, gameMusic, menuMusic);
         } 
         else if (!gameOver) {
-        
+            
             if (mouseDown) {
                 trail.addPoint(mouseX, mouseY);
                 
@@ -207,14 +223,27 @@ int main() {
                 }
             }
             renderText(renderer, font, score, hp);
+            std::string countdown = "Time Left: " + std::to_string(timer.getTimeLeft()) + "s";
+            int textWidth, textHeight;
+            TTF_SizeText(font, countdown.c_str(), &textWidth, &textHeight);
+            int x = SCREEN_HEIGHT + 180 - textWidth;
+            int y = 20;
+            renderUIText(renderer, font, countdown, x, y);
         }
     
 
-        if (gameOver && !inMenu) {
-            
+        if (timeup||gameOver && !inMenu) { 
+            if(timeup){
+                    std::string msg = "Time's up! Your score is: " + std::to_string(score);
+                    renderUIText(renderer, font, msg, 200, 250);
+                    std::string msg1 = "Press R to Restart";
+                    renderUIText(renderer, font, msg1, 260, 300);
+                    
+                }
+            else
+            {
             SDL_Color red = {255, 0, 0, 255};
             SDL_Surface* surface = TTF_RenderText_Solid(font, "Game Over! Press R to Restart", red);
-            
             if (surface) {
                 SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
                 if (texture) {
@@ -225,6 +254,7 @@ int main() {
                 SDL_FreeSurface(surface);
             }
         }
+    }
 
         if (!inMenu) {
             SDL_RenderPresent(renderer);
