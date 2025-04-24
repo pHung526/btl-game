@@ -2,5 +2,5 @@
     "files.associations": {
         "iostream": "cpp"
     },
-    "cmake.sourceDirectory": "E:/fruitss/MinGW/include/glm"
+    "cmake.sourceDirectory": "E:/btl1/MinGW/include/glm"
 }

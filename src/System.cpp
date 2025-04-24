@@ -1,5 +1,5 @@
 #include "System.h"
-#include "constants.h"  // để dùng SCREEN_WIDTH, SCREEN_HEIGHT
+#include "constants.h"
 
 bool init(SDL_Window*& window, SDL_Renderer*& renderer, TTF_Font*& font) {
     SDL_Init(SDL_INIT_VIDEO);
@@ -8,7 +8,7 @@ bool init(SDL_Window*& window, SDL_Renderer*& renderer, TTF_Font*& font) {
     window = SDL_CreateWindow("Fruit Slicer", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
                               SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-    font = TTF_OpenFont("E:/fruitss/novem.ttf", 24); // nhớ kiểm tra đường dẫn
+    font = TTF_OpenFont("E:/btl1/novem.ttf", 24);
     return window && renderer && font;
 }
 

@@ -33,8 +33,8 @@ void renderMenu(SDL_Renderer* renderer, TTF_Font* font, SDL_Texture* menuTexture
             startRect.y += (startH - startRect.h) / 2;
             if (mouseDown) {
                 inMenu = false;
-                Mix_PlayMusic(gameMusic, -1); // Switch to game music
-                musicPlaying = false; // Reset the flag for menu music
+                Mix_PlayMusic(gameMusic, -1);
+                musicPlaying = false;
             }
         }
         SDL_Texture* startTexture = SDL_CreateTextureFromSurface(renderer, startSurface);

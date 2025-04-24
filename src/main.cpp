@@ -48,21 +48,21 @@ int main() {
     if (!init(window, renderer, font)) {
         return -1;
     }
-    SDL_Surface* backgroundSurface = IMG_Load("E:/fruitss/asset/background.png");
+    SDL_Surface* backgroundSurface = IMG_Load("E:/btl1/asset/background.png");
     if (backgroundSurface) {
         backgroundTexture = SDL_CreateTextureFromSurface(renderer, backgroundSurface);
         SDL_FreeSurface(backgroundSurface);
     }
-    SDL_Surface* menuSurface = IMG_Load("E:/fruitss/asset/menu.PNG");
+    SDL_Surface* menuSurface = IMG_Load("E:/btl1/asset/menu.PNG");
     if (menuSurface) {
         menuTexture = SDL_CreateTextureFromSurface(renderer, menuSurface);
         SDL_FreeSurface(menuSurface);
     } else {
         std::cout << "Failed to load menu image: " << IMG_GetError() << std::endl;
     }
-    SDL_Texture* bomTexture = IMG_LoadTexture(renderer, "E:/fruitss/asset/bom2.png");
-    SDL_Texture* fruitsTexture = IMG_LoadTexture(renderer, "E:/fruitss/asset/watermelon.png");
-    SDL_Texture* fragmentTexture = IMG_LoadTexture(renderer, "E:/fruitss/asset/sliced.png");
+    SDL_Texture* bomTexture = IMG_LoadTexture(renderer, "E:/btl1/asset/bom2.png");
+    SDL_Texture* fruitsTexture = IMG_LoadTexture(renderer, "E:/btl1/asset/watermelon.png");
+    SDL_Texture* fragmentTexture = IMG_LoadTexture(renderer, "E:/btl1/asset/sliced.png");
     bool quit = false;
     bool inMenu = true;
     bool gameOver = false;

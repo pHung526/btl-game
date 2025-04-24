@@ -1,5 +1,5 @@
 #include "GameObject.h"
-#include <cmath> // dùng cho sqrt, fabs
+#include <cmath>
 #include <cstdlib>
 
 GameObject::GameObject(int startX, int startY, ObjectType objType, int direction) {
