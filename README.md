@@ -88,7 +88,7 @@ game.exe         # Windows
 
 ---
 
-## 🧠 Mong muốn điểm: **8.5 - 9.0**
+## 🧠 Mong muốn điểm: **8.0 - 8.5**
 
 * 🎉 **Gameplay cuốn hút**
 * 🎨 **Giao diện đẹp, hiệu ứng tốt**
