@@ -38,19 +38,29 @@
 
 ##  Tính năng nổi bật
 
-* 🎮 **Điều khiển mượt mà:** Chém trái cây bằng chuột, cảm giác slash sống động
-* 💥 **Hiệu ứng hấp dẫn:** Hiệu ứng nước trái cây, bom nổ sinh động
-* 🧠 **Chế độ chơi đa dạng:**
 
-  * Arcade Mode:* Đua điểm trong thời gian giới hạn
-  * Classic Mode:* Tránh bom, không được bỏ lỡ trái
-* 🔊 **Âm thanh & giao diện:**
+✂️ Gameplay cắt trái cây: Click chuột vào trái cây để chém. Mỗi quả bị chém sẽ tăng điểm.
 
-  * Menu dễ dùng, âm thanh sinh động
-  * Có thanh điều chỉnh âm lượng
-* 🧾 **Lưu điểm cao:** Ghi nhận điểm theo từng chế độ
+💣 Bom nguy hiểm: Nếu click trúng bom, trò chơi kết thúc ngay lập tức.
+
+🕒 Giới hạn thời gian: Trò chơi diễn ra trong 120 giây. Hãy tận dụng thời gian để đạt điểm cao nhất!
+
+🔊 Âm thanh sống động: Âm thanh cắt trái cây, nổ bom và nhạc nền tạo trải nghiệm hấp dẫn.
+
+🖥️ Giao diện người dùng: Menu chính, hướng dẫn chơi, và bảng điểm được thiết kế trực quan.
+
+🧠 Quản lý điểm số & thời gian: Điểm được tính và hiển thị liên tục. Đồng hồ đếm ngược giúp người chơi theo dõi thời gian còn lại.
 
 ---
+## Luật chơi
+Trái cây và bom xuất hiện ngẫu nhiên từ dưới lên.
+
+Click chuột vào trái cây để cắt và ghi điểm.
+
+Click trúng bom sẽ khiến trò chơi kết thúc ngay lập tức.
+
+Khi hết 120 giây, trò chơi kết thúc và hiển thị tổng điểm.
+
 
 ### 🛠️ Cài đặt và chạy game
 
@@ -89,11 +99,18 @@ game.exe         # Windows
 ---
 
 ## 🧠 Mong muốn điểm: **8.0 - 8.5**
+✓ Thêm nhiều texture trái cây, bom.
 
-* 🎉 **Gameplay cuốn hút**
-* 🎨 **Giao diện đẹp, hiệu ứng tốt**
-* 🔧 **Nhiều chế độ chơi, logic rõ ràng**
-* 📈 **Hoàn thiện tốt, dễ mở rộng**
+✓ Âm thanh khi cắt trái cây, khi nổ bom.
+
+✓ Nhạc nền trong game.
+
+✓ Hiệu ứng nổ bom (đổi texture + play sound).
+
+✓ Màn hình menu, end screen, điểm cao.
+
+✓ Đếm ngược 120 giây.
+
 
 ---
 
