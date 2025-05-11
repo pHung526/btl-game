@@ -13,6 +13,6 @@ void shakeScreen(SDL_Window* window, int intensity, int duration) {
         SDL_SetWindowPosition(window, originalX + offsetX, originalY + offsetY);
         SDL_Delay(20);
     }
-
+    
     SDL_SetWindowPosition(window, originalX, originalY);
 }

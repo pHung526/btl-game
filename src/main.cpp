@@ -20,9 +20,8 @@
 #include "game_timer.h"
 #include "game_score.h"
 
-GameTimer timer(20.0f);
+GameTimer timer(120.0f);
 int score=0;
-int highScore = 0;
 bool gameOver = false;
 struct Trail {
     std::vector<SDL_Point> points;
@@ -82,16 +81,20 @@ int main() {
     bool mouseDown = false;
     int mouseX = 0, mouseY = 0, prevMouseX = 0, prevMouseY = 0;
     bool timeup=false;
+    int highScore = loadHighScore("highscore.txt");
     while (!quit) {
         
         if (!gameOver && timer.isTimeUp()) {
             gameOver = true;
             timeup=true;
             timer.stop();
-
-            if (score > highScore)
+            if (score > highScore){
+                highScore=score;
+                std::cout<<highScore;
                 saveHighScore("highscore.txt", score);
+            }
         }
+        
         while (SDL_PollEvent(&e)) {
             if (e.type == SDL_QUIT) {
                 quit = true;
@@ -163,6 +166,10 @@ int main() {
                             Mix_PlayChannel(-1, sliceEffect, 0);
                         }
                         score += 10;
+                        if (score > highScore){
+                            highScore=score;
+                            saveHighScore("highscore.txt", score);
+                        }
                         int radius = OBJECT_SIZE / 4;
                         newObjects.push_back(GameObject(obj.x, obj.y, FRAGMENT, -1));
                         newObjects.push_back(GameObject(obj.x + radius, obj.y, FRAGMENT, 1));
@@ -253,6 +260,9 @@ int main() {
                 }
                 SDL_FreeSurface(surface);
             }
+            std::string highScoreMsg = "High Score: " + std::to_string(highScore);
+        renderUIText(renderer, font, highScoreMsg, SCREEN_WIDTH / 2 - 80, SCREEN_HEIGHT / 2 + 50);
+    
         }
     }
 
