@@ -6,7 +6,7 @@ GameObject::GameObject(int startX, int startY, ObjectType objType, int direction
     x = startX;
     y = startY;
     speed = (rand() % 4 + 2) * 1.5;
-    peakHeight = SCREEN_HEIGHT - (speed * 40);
+    peakHeight = SCREEN_HEIGHT - (speed * 40)-100;
     rising = true;
     type = objType;
     sliced = false;
